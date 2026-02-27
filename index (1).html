@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Holy City Executive Solutions</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green-deep: #1a2e1f;
+      --green-mid: #2d4a34;
+      --green-light: #3d6145;
+      --cream: #f5f0e8;
+      --cream-dark: #ede6d6;
+      --gold: #c9a84c;
+      --gold-light: #e0c278;
+      --text-dark: #1a2e1f;
+      --text-mid: #4a5e4d;
+      --white: #ffffff;
+      --ff-display: 'Cormorant Garamond', Georgia, serif;
+      --ff-body: 'Jost', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--ff-body);
+      background: var(--cream);
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
+
+    /* ── GRAIN OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.4;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.4rem 4rem;
+      background: rgba(26, 46, 31, 0.96);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+    }
+
+    .nav-logo {
+      font-family: var(--ff-display);
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--cream);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      line-height: 1.3;
+    }
+
+    .nav-logo span {
+      display: block;
+      font-size: 0.6rem;
+      font-family: var(--ff-body);
+      font-weight: 300;
+      letter-spacing: 0.3em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--ff-body);
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--cream);
+      text-decoration: none;
+      opacity: 0.8;
+      transition: opacity 0.2s, color 0.2s;
+    }
+
+    .nav-links a:hover { opacity: 1; color: var(--gold-light); }
+
+    .nav-cta {
+      font-family: var(--ff-body);
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--green-deep) !important;
+      background: var(--gold);
+      padding: 0.6rem 1.4rem;
+      border-radius: 0;
+      opacity: 1 !important;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover { background: var(--gold-light) !important; }
+
+    /* ── HERO ── */
+    #home {
+      min-height: 100vh;
+      background: var(--green-deep);
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg-pattern {
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(ellipse 60% 80% at 80% 50%, rgba(45, 74, 52, 0.6) 0%, transparent 70%),
+        repeating-linear-gradient(
+          -45deg,
+          transparent,
+          transparent 40px,
+          rgba(201, 168, 76, 0.03) 40px,
+          rgba(201, 168, 76, 0.03) 41px
+        );
+    }
+
+    .hero-ornament {
+      position: absolute;
+      right: -80px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 600px;
+      height: 600px;
+      border: 1px solid rgba(201, 168, 76, 0.12);
+      border-radius: 50%;
+    }
+
+    .hero-ornament::before {
+      content: '';
+      position: absolute;
+      inset: 30px;
+      border: 1px solid rgba(201, 168, 76, 0.08);
+      border-radius: 50%;
+    }
+
+    .hero-ornament::after {
+      content: '';
+      position: absolute;
+      inset: 70px;
+      border: 1px solid rgba(201, 168, 76, 0.05);
+      border-radius: 50%;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 4rem;
+      padding-top: 6rem;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--ff-body);
+      font-size: 0.68rem;
+      font-weight: 400;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.2s;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 30px;
+      height: 1px;
+      background: var(--gold);
+      vertical-align: middle;
+      margin-right: 1rem;
+    }
+
+    .hero-title {
+      font-family: var(--ff-display);
+      font-size: clamp(3.2rem, 6vw, 5.8rem);
+      font-weight: 300;
+      line-height: 1.08;
+      color: var(--cream);
+      max-width: 680px;
+      opacity: 0;
+      animation: fadeUp 0.9s ease forwards 0.4s;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+
+    .hero-divider {
+      width: 60px;
+      height: 1px;
+      background: linear-gradient(to right, var(--gold), transparent);
+      margin: 2rem 0;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.6s;
+    }
+
+    .hero-sub {
+      font-family: var(--ff-body);
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1.8;
+      color: rgba(245, 240, 232, 0.7);
+      max-width: 480px;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.7s;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1.2rem;
+      margin-top: 2.8rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards 0.9s;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      font-family: var(--ff-body);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--green-deep);
+      background: var(--gold);
+      padding: 1rem 2.2rem;
+      text-decoration: none;
+      transition: background 0.25s, transform 0.2s;
+    }
+
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+    .btn-outline {
+      display: inline-block;
+      font-family: var(--ff-body);
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--cream);
+      border: 1px solid rgba(245, 240, 232, 0.3);
+      padding: 1rem 2.2rem;
+      text-decoration: none;
+      transition: border-color 0.25s, color 0.25s;
+    }
+
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold-light); }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      opacity: 0;
+      animation: fadeIn 1s ease forwards 1.4s;
+    }
+
+    .hero-scroll span {
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: rgba(245, 240, 232, 0.4);
+      font-family: var(--ff-body);
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, rgba(201, 168, 76, 0.6), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+
+    /* ── ABOUT ── */
+    #about {
+      background: var(--cream);
+      padding: 8rem 4rem;
+    }
+
+    .about-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+
+    .about-visual {
+      position: relative;
+    }
+
+    .about-img-frame {
+      width: 100%;
+      aspect-ratio: 4/5;
+      background: var(--green-mid);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-img-frame::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(201, 168, 76, 0.15) 0%, transparent 60%);
+    }
+
+    .about-img-pattern {
+      position: absolute;
+      inset: 0;
+      background-image: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 20px,
+        rgba(255,255,255,0.02) 20px,
+        rgba(255,255,255,0.02) 21px
+      ),
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 20px,
+        rgba(255,255,255,0.02) 20px,
+        rgba(255,255,255,0.02) 21px
+      );
+    }
+
+    .about-img-text {
+      position: absolute;
+      bottom: 2rem;
+      left: 2rem;
+      right: 2rem;
+    }
+
+    .about-img-text p {
+      font-family: var(--ff-display);
+      font-size: 2.2rem;
+      font-style: italic;
+      font-weight: 300;
+      color: var(--cream);
+      line-height: 1.2;
+    }
+
+    .about-img-text span {
+      font-family: var(--ff-body);
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .about-accent-box {
+      position: absolute;
+      top: -1.5rem;
+      right: -1.5rem;
+      width: 80px;
+      height: 80px;
+      border: 2px solid var(--gold);
+      opacity: 0.4;
+    }
+
+    .about-accent-line {
+      position: absolute;
+      bottom: -1.5rem;
+      left: -1.5rem;
+      width: 120px;
+      height: 2px;
+      background: var(--gold);
+      opacity: 0.4;
+    }
+
+    .section-label {
+      font-family: var(--ff-body);
+      font-size: 0.65rem;
+      font-weight: 400;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+    }
+
+    .section-label::before {
+      content: '';
+      display: inline-block;
+      width: 24px;
+      height: 1px;
+      background: var(--gold);
+      vertical-align: middle;
+      margin-right: 0.8rem;
+    }
+
+    .section-title {
+      font-family: var(--ff-display);
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      font-weight: 300;
+      line-height: 1.15;
+      color: var(--green-deep);
+      margin-bottom: 1.5rem;
+    }
+
+    .section-title em { font-style: italic; color: var(--green-light); }
+
+    .section-body {
+      font-family: var(--ff-body);
+      font-size: 0.95rem;
+      font-weight: 300;
+      line-height: 1.9;
+      color: var(--text-mid);
+      margin-bottom: 1.2rem;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid rgba(26, 46, 31, 0.1);
+    }
+
+    .stat-item {}
+
+    .stat-num {
+      font-family: var(--ff-display);
+      font-size: 2.4rem;
+      font-weight: 300;
+      color: var(--green-deep);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-family: var(--ff-body);
+      font-size: 0.68rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-mid);
+      margin-top: 0.3rem;
+    }
+
+    /* ── SERVICES ── */
+    #services {
+      background: var(--green-deep);
+      padding: 8rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #services::before {
+      content: '';
+      position: absolute;
+      top: -200px; right: -200px;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      border: 1px solid rgba(201, 168, 76, 0.08);
+      pointer-events: none;
+    }
+
+    .services-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .services-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 4rem;
+      gap: 2rem;
+    }
+
+    .services-header .section-label { color: var(--gold); }
+    .services-header .section-label::before { background: var(--gold); }
+    .services-header .section-title { color: var(--cream); margin-bottom: 0; }
+    .services-header .section-title em { color: var(--gold-light); }
+
+    .services-intro {
+      font-family: var(--ff-body);
+      font-size: 0.9rem;
+      font-weight: 300;
+      line-height: 1.8;
+      color: rgba(245, 240, 232, 0.6);
+      max-width: 340px;
+      text-align: right;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5px;
+      background: rgba(201, 168, 76, 0.15);
+    }
+
+    .service-card {
+      background: var(--green-deep);
+      padding: 2.8rem 2.2rem;
+      position: relative;
+      transition: background 0.3s;
+      cursor: default;
+    }
+
+    .service-card:hover { background: var(--green-mid); }
+
+    .service-num {
+      font-family: var(--ff-display);
+      font-size: 3.5rem;
+      font-weight: 300;
+      color: rgba(201, 168, 76, 0.15);
+      line-height: 1;
+      margin-bottom: 1.5rem;
+    }
+
+    .service-icon {
+      width: 36px;
+      height: 36px;
+      margin-bottom: 1.2rem;
+    }
+
+    .service-icon svg {
+      width: 100%;
+      height: 100%;
+      stroke: var(--gold);
+      fill: none;
+      stroke-width: 1.5;
+    }
+
+    .service-name {
+      font-family: var(--ff-display);
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: var(--cream);
+      margin-bottom: 0.8rem;
+      line-height: 1.2;
+    }
+
+    .service-desc {
+      font-family: var(--ff-body);
+      font-size: 0.82rem;
+      font-weight: 300;
+      line-height: 1.8;
+      color: rgba(245, 240, 232, 0.55);
+    }
+
+    .service-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 2.2rem;
+      width: 0;
+      height: 2px;
+      background: var(--gold);
+      transition: width 0.4s ease;
+    }
+
+    .service-card:hover::after { width: calc(100% - 4.4rem); }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: var(--cream-dark);
+      padding: 8rem 4rem;
+    }
+
+    .contact-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 6rem;
+    }
+
+    .contact-info {}
+
+    .contact-tagline {
+      font-family: var(--ff-display);
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--green-deep);
+      margin: 1.2rem 0 2rem;
+      line-height: 1.3;
+    }
+
+    .contact-body {
+      font-family: var(--ff-body);
+      font-size: 0.88rem;
+      font-weight: 300;
+      line-height: 1.9;
+      color: var(--text-mid);
+      margin-bottom: 2.5rem;
+    }
+
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .contact-detail-icon {
+      width: 36px;
+      height: 36px;
+      border: 1px solid rgba(26, 46, 31, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .contact-detail-icon svg {
+      width: 14px;
+      height: 14px;
+      stroke: var(--green-light);
+      fill: none;
+      stroke-width: 1.5;
+    }
+
+    .contact-detail-text {
+      font-family: var(--ff-body);
+      font-size: 0.82rem;
+      font-weight: 300;
+      color: var(--text-mid);
+    }
+
+    .contact-form {
+      background: white;
+      padding: 3rem;
+      box-shadow: 0 4px 40px rgba(26, 46, 31, 0.06);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.4rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-family: var(--ff-body);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--green-deep);
+      margin-bottom: 0.5rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      font-family: var(--ff-body);
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: var(--text-dark);
+      background: var(--cream);
+      border: 1px solid rgba(26, 46, 31, 0.15);
+      padding: 0.85rem 1rem;
+      outline: none;
+      transition: border-color 0.2s;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--green-light);
+    }
+
+    .form-group textarea { resize: vertical; min-height: 110px; }
+
+    .form-submit {
+      width: 100%;
+      font-family: var(--ff-body);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--white);
+      background: var(--green-deep);
+      border: none;
+      padding: 1.1rem;
+      cursor: pointer;
+      transition: background 0.25s;
+    }
+
+    .form-submit:hover { background: var(--green-light); }
+
+    .form-note {
+      font-family: var(--ff-body);
+      font-size: 0.7rem;
+      color: rgba(74, 94, 77, 0.6);
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--green-deep);
+      padding: 3rem 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(201, 168, 76, 0.15);
+    }
+
+    .footer-logo {
+      font-family: var(--ff-display);
+      font-size: 0.95rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--cream);
+    }
+
+    .footer-logo span {
+      display: block;
+      font-size: 0.55rem;
+      font-family: var(--ff-body);
+      letter-spacing: 0.3em;
+      color: var(--gold);
+      margin-top: 2px;
+    }
+
+    .footer-copy {
+      font-family: var(--ff-body);
+      font-size: 0.68rem;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      color: rgba(245, 240, 232, 0.35);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-family: var(--ff-body);
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(245, 240, 232, 0.45);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--gold-light); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.5; transform: scaleY(1); }
+      50% { opacity: 1; transform: scaleY(1.1); }
+    }
+
+    /* scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 900px) {
+      nav { padding: 1.2rem 1.8rem; }
+      .nav-links { display: none; }
+
+      #home, #about, #services, #contact { padding-left: 1.8rem; padding-right: 1.8rem; }
+
+      .hero-inner { padding: 0 1.8rem; padding-top: 5rem; }
+
+      .about-inner,
+      .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+
+      .services-grid { grid-template-columns: 1fr; }
+
+      .services-header { flex-direction: column; align-items: flex-start; }
+      .services-intro { text-align: left; max-width: 100%; }
+
+      .form-row { grid-template-columns: 1fr; }
+
+      footer { flex-direction: column; gap: 1.5rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#home" class="nav-logo">
+      Holy City Executive Solutions
+      <span>Charleston, South Carolina</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact" class="nav-cta">Get Started</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="home">
+    <div class="hero-bg-pattern"></div>
+    <div class="hero-ornament"></div>
+
+    <div class="hero-inner">
+      <p class="hero-eyebrow">Holy City Executive Solutions</p>
+      <h1 class="hero-title">
+        Your time is<br>
+        <em>too valuable</em><br>
+        to be ordinary.
+      </h1>
+      <div class="hero-divider"></div>
+      <p class="hero-sub">
+        Premium administrative and virtual assistant services crafted for busy executives and growing businesses in Charleston and beyond.
+      </p>
+      <div class="hero-actions">
+        <a href="#services" class="btn-primary">Explore Services</a>
+        <a href="#contact" class="btn-outline">Schedule a Call</a>
+      </div>
+    </div>
+
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about-inner">
+      <div class="about-visual reveal">
+        <div class="about-img-frame">
+          <div class="about-img-pattern"></div>
+          <div class="about-img-text">
+            <p>"Elevating every detail, so you can focus on what matters most."</p>
+            <span>— Our Commitment</span>
+          </div>
+        </div>
+        <div class="about-accent-box"></div>
+        <div class="about-accent-line"></div>
+      </div>
+
+      <div class="about-content reveal">
+        <p class="section-label">About Us</p>
+        <h2 class="section-title">Where Southern <em>Hospitality</em> Meets Executive Excellence</h2>
+        <p class="section-body">
+          Holy City Executive Solutions was born from a simple belief — that behind every successful leader is a seamless support system. Based in Charleston, South Carolina, we bring the warmth and attentiveness of the Holy City to executive-level virtual assistance.
+        </p>
+        <p class="section-body">
+          We partner with entrepreneurs, C-suite executives, and growing businesses who need more than a task manager — they need a trusted partner who anticipates needs, eliminates friction, and keeps everything running beautifully.
+        </p>
+        <div class="about-stats">
+          <div class="stat-item">
+            <div class="stat-num">100%</div>
+            <div class="stat-label">Client Confidentiality</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">24h</div>
+            <div class="stat-label">Response Guarantee</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">Bespoke</div>
+            <div class="stat-label">Support Packages</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-num">Local</div>
+            <div class="stat-label">Rooted in Charleston</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="services-inner">
+      <div class="services-header reveal">
+        <div>
+          <p class="section-label">What We Offer</p>
+          <h2 class="section-title">Services Built for <em>Leaders</em></h2>
+        </div>
+        <p class="services-intro">
+          Every service is tailored to your workflow, your voice, and your vision — no cookie-cutter packages here.
+        </p>
+      </div>
+
+      <div class="services-grid reveal">
+
+        <div class="service-card">
+          <div class="service-num">01</div>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          </div>
+          <h3 class="service-name">Calendar & Schedule Management</h3>
+          <p class="service-desc">From complex multi-timezone scheduling to seamless meeting coordination — your calendar managed with precision and professionalism.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-num">02</div>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <h3 class="service-name">Inbox & Communications</h3>
+          <p class="service-desc">We manage your inbox with discretion — triaging emails, drafting responses in your voice, and ensuring nothing falls through the cracks.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-num">03</div>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          </div>
+          <h3 class="service-name">Document & Report Preparation</h3>
+          <p class="service-desc">Professional documents, presentations, meeting notes, and reports crafted to reflect your standards and elevate your brand.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-num">04</div>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/><line x1="7" y1="15" x2="7" y2="15" stroke-linecap="round" stroke-width="2"/><line x1="11" y1="15" x2="13" y2="15" stroke-linecap="round" stroke-width="2"/></svg>
+          </div>
+          <h3 class="service-name">Managing Payments & Invoicing</h3>
+          <p class="service-desc">We handle invoice creation, payment tracking, and follow-ups so your cash flow stays healthy and your billing process runs without a hitch.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-num">05</div>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3 class="service-name">Client Relations Support</h3>
+          <p class="service-desc">We handle client follow-ups, onboarding logistics, and relationship touchpoints — keeping your clients feeling valued and prioritized.</p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-num">06</div>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </div>
+          <h3 class="service-name">Social Media Advertising & Marketing</h3>
+          <p class="service-desc">From content planning and post scheduling to paid ad management — we grow your online presence and keep your brand showing up consistently.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-inner">
+
+      <div class="contact-info reveal">
+        <p class="section-label">Get In Touch</p>
+        <h2 class="contact-tagline">"Let's build something seamless together."</h2>
+        <p class="contact-body">
+          Whether you're ready to hire or just exploring, we'd love to connect. Tell us what you're working on and we'll put together a tailored solution for you.
+        </p>
+
+        <div class="contact-detail">
+          <div class="contact-detail-icon">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <span class="contact-detail-text"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="84e7e1e8e1f7f0e1c4ecebe8fde7edf0fde1fce1e7aae7ebe9">[email&#160;protected]</a></span>
+        </div>
+
+        <div class="contact-detail">
+          <div class="contact-detail-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <span class="contact-detail-text">Charleston, South Carolina</span>
+        </div>
+
+        <div class="contact-detail">
+          <div class="contact-detail-icon">
+            <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.6 3.37 2 2 0 0 1 3.57 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.73a16 16 0 0 0 6.29 6.29l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <span class="contact-detail-text">Available for consultation by appointment</span>
+        </div>
+      </div>
+
+      <div class="contact-form reveal">
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input id="f-first" type="text" placeholder="Jane" />
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input id="f-last" type="text" placeholder="Smith" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input id="f-email" type="email" placeholder="jane@company.com" />
+        </div>
+        <div class="form-group">
+          <label>Company / Organization</label>
+          <input id="f-company" type="text" placeholder="Your Company Name" />
+        </div>
+        <div class="form-group">
+          <label>Service Interest</label>
+          <select id="f-service">
+            <option value="">Select a service...</option>
+            <option>Calendar & Schedule Management</option>
+            <option>Inbox & Communications</option>
+            <option>Document & Report Preparation</option>
+            <option>Managing Payments & Invoicing</option>
+            <option>Client Relations Support</option>
+            <option>Social Media Advertising & Marketing</option>
+            <option>Multiple Services / Unsure</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Tell Us About Your Needs</label>
+          <textarea id="f-message" placeholder="Share a bit about what you're looking for and how we can help..."></textarea>
+        </div>
+        <button class="form-submit" onclick="handleSubmit(event)">Send Inquiry →</button>
+        <p class="form-note">We respond to all inquiries within 24 hours, guaranteed.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">
+      Holy City Executive Solutions
+      <span>Charleston, South Carolina</span>
+    </div>
+    <p class="footer-copy">© 2025 Holy City Executive Solutions. All rights reserved.</p>
+    <ul class="footer-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </footer>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    reveals.forEach(el => observer.observe(el));
+
+    // Nav scroll effect
+    const nav = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+      nav.style.boxShadow = window.scrollY > 20
+        ? '0 4px 30px rgba(0,0,0,0.3)'
+        : 'none';
+    });
+
+    // Form submit — opens default email client addressed to Celeste
+    function handleSubmit(e) {
+      e.preventDefault();
+      const first   = document.getElementById('f-first').value.trim();
+      const last    = document.getElementById('f-last').value.trim();
+      const email   = document.getElementById('f-email').value.trim();
+      const company = document.getElementById('f-company').value.trim();
+      const service = document.getElementById('f-service').value;
+      const message = document.getElementById('f-message').value.trim();
+
+      if (!first || !email) {
+        alert('Please enter at least your first name and email address.');
+        return;
+      }
+
+      const subject = encodeURIComponent(`New Inquiry from ${first} ${last}`.trim());
+      const body = encodeURIComponent(
+        `Name: ${first} ${last}\n` +
+        `Email: ${email}\n` +
+        (company ? `Company: ${company}\n` : '') +
+        (service ? `Service Interest: ${service}\n` : '') +
+        (message ? `\nMessage:\n${message}` : '')
+      );
+
+      window.location.href = `mailto:celeste@holycityexec.com?subject=${subject}&body=${body}`;
+
+      const btn = e.target;
+      btn.textContent = 'Opening Email Client ✓';
+      btn.style.background = '#3d6145';
+      setTimeout(() => {
+        btn.textContent = 'Send Inquiry →';
+        btn.style.background = '';
+      }, 3000);
+    }
+  </script>
+
+</body>
+</html>
